@@ -16,7 +16,7 @@ def call(){
 
     parameters {
         choice choices: ['gradle', 'maven'], description: 'Indicar herramienta de construcción', name: 'builtTool'
-         string defaultValue: '', description: 'Agregar stage a ejecutar separados por coma', name: 'stage'
+         string defaultValue: '', description: 'Agregar stage a ejecutar separados por coma', name: 'etapasPipeline'
     }
 
     stages{
@@ -25,14 +25,34 @@ def call(){
                 steps{
                     script {
 
-                            if (params.builtTool == "gradle") {
-                                	//def ejecucion = load 'gradle.groovy'
-	                                //ejecucion.call()
-                                     gradle()
-                            } else {
-                                     maven()
-                                	//def ejecucion = load 'maven.groovy'
-	                               // ejecucion.call()
+                            def etapasPipeline = params.etapasPipeline;
+
+                            if (etapasPipeline == ""){
+
+
+                                if (params.builtTool == "gradle") {
+                                        //def ejecucion = load 'gradle.groovy'
+                                        //ejecucion.call()
+                                        gradle()
+                                } else {
+                                        maven()
+                                        //def ejecucion = load 'maven.groovy'
+                                    // ejecucion.call()
+                                }
+
+                            }else{
+
+                                def listaEtapas = etapasPipeline.split(',')
+
+                                 println "listaEtapas  + ${listaEtapas}"
+
+                                if (params.builtTool == "gradle") {
+                                    // build, sonar, run en conjunto con test , nexus 
+                                }else{
+                                    // compile, sonar , test , compile, Guardando WAR, run and test jar , nexus
+                                }
+
+
                             }
 
                            echo "pipeline"

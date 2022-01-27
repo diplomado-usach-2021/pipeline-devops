@@ -32,7 +32,7 @@ def call(){
 
 
             
-            stage("Jar Code"){
+            stage("Jar Code compile "){
                       STAGE = env.STAGE_NAME
                       sh  " ./mvnw clean package -e "
             }
