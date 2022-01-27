@@ -25,10 +25,10 @@ def call(){
                     script {
 
                             if (params.builtTool == "gradle") {
-                                	def ejecucion = load 'pipeline-devops@libs/vars/gradle.groovy'
+                                	def ejecucion = load '${rootDir}/gradle.groovy'
 	                                ejecucion.call()
                             } else {
-                                	def ejecucion = load 'pipeline-devops@libs/vars/maven.groovy'
+                                	def ejecucion = load '${rootDir}/maven.groovy'
 	                                ejecucion.call()
                             }
 
