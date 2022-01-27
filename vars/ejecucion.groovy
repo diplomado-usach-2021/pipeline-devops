@@ -27,7 +27,7 @@ def call(){
 
                             def etapasPipeline = params.etapasPipeline;
 
-                            if (etapasPipeline == ""){
+                                println "etapasPipeline  + ${etapasPipeline}"
 
                                 def listaEtapas = etapasPipeline.split(',')
                                 println "listaEtapas  + ${listaEtapas}"
@@ -44,7 +44,7 @@ def call(){
                                     // ejecucion.call()
                                 }
 
-                            }
+                        
 
                            echo "pipeline"
                     }
