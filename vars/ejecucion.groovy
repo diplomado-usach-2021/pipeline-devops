@@ -52,7 +52,7 @@ def call(){
                                                 if (!etapasDefinidas.contains(etapa)){
                                                     marca = true;
                                                     if (etapasNoExistente == ""){
-                                                            etapasNoExistente = etapasNoExistente;
+                                                            etapasNoExistente = etapa;
                                                     }else{
                                                             etapasNoExistente = etapasNoExistente + "," + etapa ;
                                                     }
