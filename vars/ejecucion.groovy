@@ -34,13 +34,32 @@ def call(){
                                 println "listaEtapas  + ${listaEtapas}"
 
                                 if (params.builtTool == "gradle") {
-                                     // build, sonar, run en conjunto con test , nexus 
+                                     def etapasDefinidas = ["build","sonar","run","test","nexus"]
                                         //def ejecucion = load 'gradle.groovy'
                                         //ejecucion.call()
+                                    def etapasNoExistente = "";
+                                    def marca = false;
+                                    for(etapa in listaEtapas){
+                                       if (!etapasDefinidas.contains(etapa)){
+                                           marca = true;
+                                           if (etapasNoExistente = ""){
+                                                etapasNoExistente = etapasNoExistente;
+                                           }else{
+                                                etapasNoExistente = etapasNoExistente + "," + etapa ;
+                                           }
+                                       }
+                                    }
+                                    if (marca == false){
                                         gradle(listaEtapas)
+                                    }else{
+                                       println "lista etapas no existente : + ${etapasNoExistente}"  
+                                    }
                                 } else {
+
+                                      def etapasDefinidas =  ["compile","sonar","test","package","guardarJar","run","nexus"]
+
                                         maven(listaEtapas)
-                                        // compile, sonar , test , compile, Guardando WAR, run and test jar , nexus
+                                     
                                         //def ejecucion = load 'maven.groovy'
                                     // ejecucion.call()
                                 }
