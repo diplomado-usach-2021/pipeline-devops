@@ -6,7 +6,7 @@
 
 def call(){
 
-            println "listaEtapas  + ${listaEtapas}"
+            println "listaEtapas 2 groovy  + ${listaEtapas}"
   
              stage("Build & unit test"){
                              STAGE = env.STAGE_NAME
