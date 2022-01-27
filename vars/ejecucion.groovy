@@ -24,6 +24,8 @@ def call(){
                 steps{
                     script {
 
+                             def rootDir = pwd()
+                             println("Current Directory: " + rootDir)
                             if (params.builtTool == "gradle") {
                                 	def ejecucion = load "${rootDir}/gradle.groovy"
 	                                ejecucion.call()
