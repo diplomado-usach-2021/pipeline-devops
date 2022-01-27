@@ -5,6 +5,8 @@
 */
 
 def call(){
+
+            println "listaEtapas  + ${listaEtapas}"
   
              stage("Build & unit test"){
                              STAGE = env.STAGE_NAME

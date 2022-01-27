@@ -29,29 +29,20 @@ def call(){
 
                             if (etapasPipeline == ""){
 
+                                def listaEtapas = etapasPipeline.split(',')
+                                println "listaEtapas  + ${listaEtapas}"
 
                                 if (params.builtTool == "gradle") {
+                                     // build, sonar, run en conjunto con test , nexus 
                                         //def ejecucion = load 'gradle.groovy'
                                         //ejecucion.call()
                                         gradle()
                                 } else {
                                         maven()
+                                        // compile, sonar , test , compile, Guardando WAR, run and test jar , nexus
                                         //def ejecucion = load 'maven.groovy'
                                     // ejecucion.call()
                                 }
-
-                            }else{
-
-                                def listaEtapas = etapasPipeline.split(',')
-
-                                 println "listaEtapas  + ${listaEtapas}"
-
-                                if (params.builtTool == "gradle") {
-                                    // build, sonar, run en conjunto con test , nexus 
-                                }else{
-                                    // compile, sonar , test , compile, Guardando WAR, run and test jar , nexus
-                                }
-
 
                             }
 
