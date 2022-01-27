@@ -61,16 +61,47 @@ def call(){
                                             if (marca == false){
                                                 gradle(listaEtapas)
                                             }else{
-                                                 println "lista etapas no existente : + ${etapasNoExistente}"  
+                                                 println "lista etapas no existente : + ${etapasNoExistente}"
+                                                  throw new Exception("${etapasNoExistente}")  
                                             }
 
                                
                                   }
                                 } else {
+                                    
+                                     
+                                         if (listaEtapas.size()==1 && listaEtapas.contains("")){
+                                                      maven(listaEtapas)
+                                           }else{
+                                      
+                                              def  listaEtapasCantidad = listaEtapas.size();
+                                              println "listaEtapasCantidad : + ${listaEtapasCantidad}"  
 
-                                      def etapasDefinidas =  ["compile","sonar","test","package","guardarJar","run","nexus"]
 
-                                        maven(listaEtapas)
+                                                def etapasDefinidas =  ["compile","sonar","test","package","guardarJar","run","nexus"]
+                                                    //def ejecucion = load 'gradle.groovy'
+                                                    //ejecucion.call()
+                                                def etapasNoExistente = "";
+                                                def marca = false;
+                                                for(etapa in listaEtapas){
+                                                if (!etapasDefinidas.contains(etapa)){
+                                                    marca = true;
+                                                    if (etapasNoExistente == ""){
+                                                            etapasNoExistente = etapa;
+                                                    }else{
+                                                            etapasNoExistente = etapasNoExistente + "," + etapa ;
+                                                    }
+                                            }
+                                            }
+                                            if (marca == false){
+                                                 maven(listaEtapas)
+                                            }else{
+                                                 println "lista etapas no existente : + ${etapasNoExistente}"  
+                                            }
+
+                               
+                                  }
+
                                      
                                         //def ejecucion = load 'maven.groovy'
                                     // ejecucion.call()
