@@ -36,7 +36,10 @@ def call(){
                                 if (params.builtTool == "gradle") {
 
                                     if (listaEtapas.size()!=0){
-                                   
+                                              def  listaEtapasCantidad = listaEtapas.size();
+                                              println "listaEtapasCantidad : + ${listaEtapasCantidad}"  
+
+                                              
                                             def etapasDefinidas = ["build","sonar","run","test","nexus"]
                                                 //def ejecucion = load 'gradle.groovy'
                                                 //ejecucion.call()
@@ -55,7 +58,7 @@ def call(){
                                             if (marca == false){
                                                 gradle(listaEtapas)
                                             }else{
-                                            println "lista etapas no existente : + ${etapasNoExistente}"  
+                                                 println "lista etapas no existente : + ${etapasNoExistente}"  
                                             }
 
                                   }else{
