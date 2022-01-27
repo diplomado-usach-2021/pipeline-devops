@@ -8,14 +8,15 @@ def call(listaEtapas){
 
             println "listaEtapas 2 groovy  + ${listaEtapas}"
   
-
+        /*
          if (listaEtapas.contains("") ||  listaEtapas.contains("build")){ 
                 println ("entro");
          }else{
                 println ("no entro");
-         }   
+         }*/   
 
 
+    if (listaEtapas.contains("") ||  listaEtapas.contains("build")){ 
              stage("Build & unit test"){
                              STAGE = env.STAGE_NAME
                              println "Stage: ${env.STAGE_NAME}"
@@ -26,8 +27,9 @@ def call(listaEtapas){
                              echo "${WORKSPACE}";                 
          
             }
+    } 
             
-
+    if (listaEtapas.contains("") ||  listaEtapas.contains("sonar")){ 
             stage("sonar"){
                          STAGE = env.STAGE_NAME
                           println "Stage: ${env.STAGE_NAME}"  
@@ -38,6 +40,7 @@ def call(listaEtapas){
   
               }
             }
+    }
 
 /*
            stage('Guardando WAR') {             
@@ -46,21 +49,25 @@ def call(listaEtapas){
             }
 */
 
+    if (listaEtapas.contains("") ||  listaEtapas.contains("run")){ 
             stage("Run"){
                           STAGE = env.STAGE_NAME
                           println "Stage: ${env.STAGE_NAME}"    
                           sh " nohup bash gradlew bootRun & "
                           sleep 20        
             }
+    }
 			
-          stage("Testing Application"){
+      if (listaEtapas.contains("") ||  listaEtapas.contains("test")){    
+             stage("Testing Application"){
                              STAGE = env.STAGE_NAME
                              println "Stage: ${env.STAGE_NAME}"
                              sh "curl -X GET 'http://localhost:8081/rest/mscovid/test?msg=testing'"                         
-            }
-
+             }
+          }
 
            
+      if (listaEtapas.contains("") ||  listaEtapas.contains("nexus")){    
             stage('nexus') {
                 STAGE = env.STAGE_NAME
                 nexusPublisher nexusInstanceId: 'nexus_test',
@@ -80,7 +87,7 @@ def call(listaEtapas){
                     ]
                 ]
         }
-
+      }
             
 		
    
