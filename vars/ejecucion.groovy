@@ -25,10 +25,10 @@ def call(){
                     script {
 
                             if (params.builtTool == "gradle") {
-                                	def ejecucion = load 'gradle.groovy'
+                                	def ejecucion = load 'vars/gradle.groovy'
 	                                ejecucion.call()
                             } else {
-                                	def ejecucion = load 'maven.groovy'
+                                	def ejecucion = load 'vars/maven.groovy'
 	                                ejecucion.call()
                             }
 
