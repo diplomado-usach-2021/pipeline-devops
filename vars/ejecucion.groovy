@@ -24,21 +24,20 @@ def call(){
                 steps{
                     script {
 
-                             def rootDir = pwd()
-                             println("Current Directory: " + rootDir)
                             if (params.builtTool == "gradle") {
-                                	def ejecucion = load "${rootDir}/var/gradle.groovy"
-	                                ejecucion.call()
+                                	//def ejecucion = load 'gradle.groovy'
+	                                //ejecucion.call()
+                                     gradle()
                             } else {
-                                	def ejecucion = load "${rootDir}/var/maven.groovy"
-	                                ejecucion.call()
+                                     maven()
+                                	//def ejecucion = load 'maven.groovy'
+	                               // ejecucion.call()
                             }
 
                            echo "pipeline"
                     }
                 } 
             }
-
 
 
         }
