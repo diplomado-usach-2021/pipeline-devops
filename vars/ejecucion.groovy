@@ -27,10 +27,10 @@ def call(){
                              def rootDir = pwd()
                              println("Current Directory: " + rootDir)
                             if (params.builtTool == "gradle") {
-                                	def ejecucion = load "${rootDir}/gradle.groovy"
+                                	def ejecucion = load "${rootDir}/var/gradle.groovy"
 	                                ejecucion.call()
                             } else {
-                                	def ejecucion = load "${rootDir}/maven.groovy"
+                                	def ejecucion = load "${rootDir}/var/maven.groovy"
 	                                ejecucion.call()
                             }
 
