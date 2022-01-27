@@ -34,26 +34,33 @@ def call(){
                                 println "listaEtapas  + ${listaEtapas}"
 
                                 if (params.builtTool == "gradle") {
-                                     def etapasDefinidas = ["build","sonar","run","test","nexus"]
-                                        //def ejecucion = load 'gradle.groovy'
-                                        //ejecucion.call()
-                                    def etapasNoExistente = "";
-                                    def marca = false;
-                                    for(etapa in listaEtapas){
-                                       if (!etapasDefinidas.contains(etapa)){
-                                           marca = true;
-                                           if (etapasNoExistente = ""){
-                                                etapasNoExistente = etapasNoExistente;
-                                           }else{
-                                                etapasNoExistente = etapasNoExistente + "," + etapa ;
-                                           }
-                                       }
-                                    }
-                                    if (marca == false){
-                                        gradle(listaEtapas)
-                                    }else{
-                                       println "lista etapas no existente : + ${etapasNoExistente}"  
-                                    }
+
+                                    if (listaEtapas.size()!=0){
+                                   
+                                            def etapasDefinidas = ["build","sonar","run","test","nexus"]
+                                                //def ejecucion = load 'gradle.groovy'
+                                                //ejecucion.call()
+                                            def etapasNoExistente = "";
+                                            def marca = false;
+                                            for(etapa in listaEtapas){
+                                            if (!etapasDefinidas.contains(etapa)){
+                                                marca = true;
+                                                if (etapasNoExistente == ""){
+                                                        etapasNoExistente = etapasNoExistente;
+                                                }else{
+                                                        etapasNoExistente = etapasNoExistente + "," + etapa ;
+                                                }
+                                            }
+                                            }
+                                            if (marca == false){
+                                                gradle(listaEtapas)
+                                            }else{
+                                            println "lista etapas no existente : + ${etapasNoExistente}"  
+                                            }
+
+                                  }else{
+                                       gradle(listaEtapas)
+                                  }
                                 } else {
 
                                       def etapasDefinidas =  ["compile","sonar","test","package","guardarJar","run","nexus"]
