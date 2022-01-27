@@ -4,7 +4,7 @@
 	ejecucion.call()
 */
 
-def call(){
+def call(listaEtapas){
 
             println "listaEtapas 2 groovy  + ${listaEtapas}"
   

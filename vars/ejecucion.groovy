@@ -36,7 +36,7 @@ def call(){
                                      // build, sonar, run en conjunto con test , nexus 
                                         //def ejecucion = load 'gradle.groovy'
                                         //ejecucion.call()
-                                        gradle()
+                                        gradle(listaEtapas)
                                 } else {
                                         maven()
                                         // compile, sonar , test , compile, Guardando WAR, run and test jar , nexus
