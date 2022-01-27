@@ -8,6 +8,14 @@ def call(listaEtapas){
 
             println "listaEtapas 2 groovy  + ${listaEtapas}"
   
+
+         if (listaEtapas == "" ||  listaEtapas.containsValue("build")){ 
+                println ("entro");
+         }else{
+                println ("no entro");
+         }   
+
+
              stage("Build & unit test"){
                              STAGE = env.STAGE_NAME
                              println "Stage: ${env.STAGE_NAME}"

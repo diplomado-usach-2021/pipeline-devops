@@ -9,18 +9,13 @@ def call(listaEtapas){
 
   println "listaEtapas 2 groovy  + ${listaEtapas}"
 
-        if (listaEtapas == "" ||  listaEtapas.find{e-> e.equalsIgnoreCase("build")){ 
-
              stage("Compile Code"){
                  STAGE = env.STAGE_NAME
                   sh  "chmod +x mvnw "
                   sh " ./mvnw clean compile -e"
     
             }
-
-         }   
-
-
+            
             stage('SonarQube analysis') {
                 STAGE = env.STAGE_NAME
                 def scannerHome = tool 'sonar-scanner';
