@@ -9,7 +9,7 @@ def call(listaEtapas){
             println "listaEtapas 2 groovy  + ${listaEtapas}"
   
 
-         if (listaEtapas == "[]" ||  listaEtapas.contains("build")){ 
+         if (listaEtapas.isEmpty() ||  listaEtapas.contains("build")){ 
                 println ("entro");
          }else{
                 println ("no entro");
