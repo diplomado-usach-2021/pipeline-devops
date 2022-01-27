@@ -61,8 +61,8 @@ def call(){
                                             if (marca == false){
                                                 gradle(listaEtapas)
                                             }else{
-                                                 println "lista etapas no existente : + ${etapasNoExistente}"
-                                                  throw new Exception("${etapasNoExistente}")  
+                                                 println "error no existe las siguientes etapas : + ${etapasNoExistente}"
+                                                  slackSend (color: '#FF0000', message: "Build Failure Build Success [Víctor Menares] [${env.JOB_NAME}] [${params.builtTool}] fases ingresada no existen : ${etapasNoExistente} ")
                                             }
 
                                
@@ -96,7 +96,9 @@ def call(){
                                             if (marca == false){
                                                  maven(listaEtapas)
                                             }else{
-                                                 println "lista etapas no existente : + ${etapasNoExistente}"  
+                                                 println "error no existe las siguientes etapas : + ${etapasNoExistente}"
+                                                slackSend (color: '#FF0000', message: "Build Failure Build Success [Víctor Menares] [${env.JOB_NAME}] [${params.builtTool}] fases ingresada no existen : ${etapasNoExistente} ")
+
                                             }
 
                                
