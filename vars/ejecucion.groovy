@@ -11,6 +11,7 @@ def call(){
 
     environment{
         STAGE = '';
+        STAGEFALTANTES = '';
     }
 
 
