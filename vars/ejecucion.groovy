@@ -16,10 +16,11 @@ def call(){
 
     parameters {
         choice choices: ['gradle', 'maven'], description: 'Indicar herramienta de construcción', name: 'builtTool'
+         string defaultValue: '', description: 'Agregar stage a ejecutar separados por coma', name: 'stage'
     }
 
     stages{
-        
+    
       stage("Pipeline"){
                 steps{
                     script {
