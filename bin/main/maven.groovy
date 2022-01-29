@@ -53,17 +53,6 @@ def call(listaEtapas,pipelineType){
                          }
                     }
             
-
-                    /*
-                    if (listaEtapas.contains("") ||  listaEtapas.contains("guardarJar")){ 
-                        figlet "Stage: ${env.STAGE_NAME}"
-                        stage('Guardando WAR') {
-                                        STAGE = env.STAGE_NAME             
-                                        archiveArtifacts 'build/*.jar'
-                
-                        }
-                    }
-                    */
             
                     if (listaEtapas.contains("") ||  listaEtapas.contains("run")){
                         stage("runJar"){
