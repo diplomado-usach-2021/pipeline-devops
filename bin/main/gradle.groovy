@@ -5,7 +5,7 @@
 */
 
 def call(listaEtapas,pipelineType){
-
+            figlet 'gradle'
             println "listaEtapas 2 groovy  + ${listaEtapas}"
            figlet pipelineType
         /*
@@ -16,9 +16,10 @@ def call(listaEtapas,pipelineType){
          }*/   
 
         if (pipelineType == 'CI'){
+            figlet 'Integración Continua'
 
         }else if (pipelineType == 'CD'){
-
+            figlet 'devilery Continua'
         }
 
     if (listaEtapas.contains("") ||  listaEtapas.contains("build")){ 
