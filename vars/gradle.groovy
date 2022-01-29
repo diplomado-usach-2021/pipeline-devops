@@ -99,7 +99,7 @@ def call(listaEtapas,pipelineType){
             stage('Guardando WAR') { 
                      figlet "Stage: ${env.STAGE_NAME}"                    
                       archiveArtifacts '*.jar'               
-                }
+                
             }
 
            stage("runDownloadedJar"){
