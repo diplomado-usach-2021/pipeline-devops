@@ -16,8 +16,7 @@ def call(listaEtapas,pipelineType){
                             STAGE = env.STAGE_NAME
                             figlet "Stage: ${env.STAGE_NAME}"
                             sh  "chmod +x mvnw "
-                            sh "
-                            ./mvnw clean compile -e"
+                            sh " ./mvnw clean compile -e"
                 
                         }
                     }
