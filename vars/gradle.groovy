@@ -116,8 +116,24 @@ def call(listaEtapas,pipelineType){
         stage("nexusCD"){        
             figlet "Stage: ${env.STAGE_NAME}"      
              sh 'echo ${WORKSPACE}'
-               nexusPublisher nexusInstanceId: 'nexus_test', nexusRepositoryId: 'test-nexus', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: "${env.WORKSPACE}/build/libs/DevOpsUsach2020-1.0.0.jar"]], mavenCoordinate: [artifactId: 'DevOpsUsach2020', groupId: 'com.devopsusach2020', packaging: 'jar', version: '1.0.0']]]
-         
+             //  nexusPublisher nexusInstanceId: 'nexus_test', nexusRepositoryId: 'test-nexus', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: "${env.WORKSPACE}/build/libs/DevOpsUsach2020-1.0.0.jar"]], mavenCoordinate: [artifactId: 'DevOpsUsach2020', groupId: 'com.devopsusach2020', packaging: 'jar', version: '1.0.0']]]
+                STAGE = env.STAGE_NAME
+                    nexusPublisher nexusInstanceId: 'nexus_test',
+                    nexusRepositoryId: 'test-nexus',
+                    packages: [
+                        [
+                            $class: 'MavenPackage',
+                            mavenAssetList: [
+                                [classifier: '', extension: '', filePath: "${env.WORKSPACE}/DevOpsUsach2020-1.0.0.jar"]
+                            ],
+                            mavenCoordinate: [
+                                artifactId: 'DevOpsUsach2020',
+                                groupId: 'com.devopsusach2020',
+                                packaging: 'jar',
+                                version: '0.0.3'
+                            ]
+                        ]
+                    ]
 
             
         }
