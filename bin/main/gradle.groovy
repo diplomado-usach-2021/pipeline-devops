@@ -11,7 +11,7 @@ def call(listaEtapas,pipelineType){
   
 
 
-        if (pipelineType == 'CD'){
+        if (pipelineType == 'CI'){
                         figlet 'Integración Continua'
 
                     if (listaEtapas.contains("") ||  listaEtapas.contains("build")){ 
@@ -78,7 +78,7 @@ def call(listaEtapas,pipelineType){
                                         artifactId: 'DevOpsUsach2020',
                                         groupId: 'com.devopsusach2020',
                                         packaging: 'jar',
-                                        version: '0.0.3'
+                                        version: '0.0.1'
                                     ]
                                 ]
                             ]
@@ -86,7 +86,7 @@ def call(listaEtapas,pipelineType){
                 }
                         
 
-        }else if (pipelineType == 'CI'){
+        }else if (pipelineType == 'CD'){
 
             figlet 'devilery Continua'
                 stage("downloadNexus"){
@@ -95,13 +95,7 @@ def call(listaEtapas,pipelineType){
                     	                                    
                     
                     }
-              /*      
-            stage('Guardando WAR') { 
-                     figlet "Stage: ${env.STAGE_NAME}"                    
-                      archiveArtifacts '*.jar'               
-                
-            }*/
-
+       
            stage("runDownloadedJar"){
                     figlet "Stage: ${env.STAGE_NAME}"
                     sh "nohup java -jar DevOpsUsach2020-0.0.1.jar &"
