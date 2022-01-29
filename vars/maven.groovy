@@ -12,6 +12,7 @@ def call(listaEtapas,pipelineType){
         if (listaEtapas.contains("") ||  listaEtapas.contains("compile")){ 
              stage("Compile Code"){
                  STAGE = env.STAGE_NAME
+                 figlet "Stage: ${env.STAGE_NAME}"
                   sh  "chmod +x mvnw "
                   sh " ./mvnw clean compile -e"
     
@@ -21,6 +22,8 @@ def call(listaEtapas,pipelineType){
         if (listaEtapas.contains("") ||  listaEtapas.contains("sonar")){ 
             stage('SonarQube analysis') {
                 STAGE = env.STAGE_NAME
+                figlet "Stage: ${env.STAGE_NAME}"
+
                 def scannerHome = tool 'sonar-scanner';
                 withSonarQubeEnv('sonarqube-server') { 
                                 sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=ejemplo-maven-key  -Dsonar.sources=src -Dsonar.java.binaries=build "
@@ -32,6 +35,7 @@ def call(listaEtapas,pipelineType){
          
    
           if (listaEtapas.contains("") ||  listaEtapas.contains("test")){ 
+                  figlet "Stage: ${env.STAGE_NAME}"
                   stage("Test Code"){
                          STAGE = env.STAGE_NAME
                         sh  " ./mvnw clean test -e "
@@ -40,6 +44,7 @@ def call(listaEtapas,pipelineType){
 
 
         if (listaEtapas.contains("") ||  listaEtapas.contains("package")){ 
+            figlet "Stage: ${env.STAGE_NAME}"
             stage("Jar Code package "){
                       STAGE = env.STAGE_NAME
                       sh  " ./mvnw clean package -e "
@@ -48,6 +53,7 @@ def call(listaEtapas,pipelineType){
 
 
         if (listaEtapas.contains("") ||  listaEtapas.contains("guardarJar")){ 
+            figlet "Stage: ${env.STAGE_NAME}"
              stage('Guardando WAR') {
                               STAGE = env.STAGE_NAME             
                               archiveArtifacts 'build/*.jar'
@@ -67,7 +73,8 @@ def call(listaEtapas,pipelineType){
 */
 
  
-        if (listaEtapas.contains("") ||  listaEtapas.contains("run")){ 
+        if (listaEtapas.contains("") ||  listaEtapas.contains("run")){
+            figlet "Stage: ${env.STAGE_NAME}" 
             stage("Run Jar"){
                               STAGE = env.STAGE_NAME
                                sh  "nohup bash mvnw spring-boot:run &"
@@ -75,7 +82,8 @@ def call(listaEtapas,pipelineType){
             }
          }
 			
-        if (listaEtapas.contains("") ||  listaEtapas.contains("testJar")){ 
+        if (listaEtapas.contains("") ||  listaEtapas.contains("testJar")){
+          figlet "Stage: ${env.STAGE_NAME}"   
           stage("Testing Application"){
                               STAGE = env.STAGE_NAME
                                sh  " curl -X GET 'http://localhost:8081/rest/mscovid/test?msg=testing' "
@@ -83,6 +91,7 @@ def call(listaEtapas,pipelineType){
         }
 
     if (listaEtapas.contains("") ||  listaEtapas.contains("nexus")){ 
+            figlet "Stage: ${env.STAGE_NAME}"
             stage('nexus') {
                     STAGE = env.STAGE_NAME
                     nexusPublisher nexusInstanceId: 'nexus_test',

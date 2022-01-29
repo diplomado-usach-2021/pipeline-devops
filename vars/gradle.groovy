@@ -15,11 +15,17 @@ def call(listaEtapas,pipelineType){
                 println ("no entro");
          }*/   
 
+        if (pipelineType == 'CI'){
+
+        }else if (pipelineType == 'CD'){
+
+        }
 
     if (listaEtapas.contains("") ||  listaEtapas.contains("build")){ 
              stage("Build & unit test"){
                              STAGE = env.STAGE_NAME
                              println "Stage: ${env.STAGE_NAME}"
+                             figlet "Stage: ${env.STAGE_NAME}"
                              sh " whoami; ls -ltr "
                              sh  "chmod +x gradlew "
                              sh "./gradlew clean build "
@@ -33,6 +39,7 @@ def call(listaEtapas,pipelineType){
             stage("sonar"){
                          STAGE = env.STAGE_NAME
                           println "Stage: ${env.STAGE_NAME}"  
+                          figlet "Stage: ${env.STAGE_NAME}"
                             def scannerHome = tool 'sonar-scanner';
                              withSonarQubeEnv('sonarqube-server') { 
                                 sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=ejemplo-gradle-key  -Dsonar.sources=src -Dsonar.java.binaries=build "
@@ -52,6 +59,7 @@ def call(listaEtapas,pipelineType){
     if (listaEtapas.contains("") ||  listaEtapas.contains("run")){ 
             stage("Run"){
                           STAGE = env.STAGE_NAME
+                          figlet "Stage: ${env.STAGE_NAME}"
                           println "Stage: ${env.STAGE_NAME}"    
                           sh " nohup bash gradlew bootRun & "
                           sleep 20        
@@ -61,6 +69,7 @@ def call(listaEtapas,pipelineType){
       if (listaEtapas.contains("") ||  listaEtapas.contains("test")){    
              stage("Testing Application"){
                              STAGE = env.STAGE_NAME
+                             figlet "Stage: ${env.STAGE_NAME}"
                              println "Stage: ${env.STAGE_NAME}"
                              sh "curl -X GET 'http://localhost:8081/rest/mscovid/test?msg=testing'"                         
              }
@@ -69,6 +78,7 @@ def call(listaEtapas,pipelineType){
            
       if (listaEtapas.contains("") ||  listaEtapas.contains("nexus")){    
             stage('nexus') {
+                figlet "Stage: ${env.STAGE_NAME}"
                 STAGE = env.STAGE_NAME
                 nexusPublisher nexusInstanceId: 'nexus_test',
                 nexusRepositoryId: 'test-nexus',
