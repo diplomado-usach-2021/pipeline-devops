@@ -124,13 +124,13 @@ def call(listaEtapas,pipelineType){
                         [
                             $class: 'MavenPackage',
                             mavenAssetList: [
-                                [classifier: '', extension: '', filePath: "${env.WORKSPACE}/DevOpsUsach2020-1.0.0.jar"]
+                                [classifier: '', extension: '', filePath: "${env.WORKSPACE}/DevOpsUsach2020-0.0.1.jar"]
                             ],
                             mavenCoordinate: [
                                 artifactId: 'DevOpsUsach2020',
                                 groupId: 'com.devopsusach2020',
                                 packaging: 'jar',
-                                version: '0.0.3'
+                                version: '1.0.0'
                             ]
                         ]
                     ]
