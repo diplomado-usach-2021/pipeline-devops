@@ -95,12 +95,12 @@ def call(listaEtapas,pipelineType){
                     	                                    
                     
                     }
-                    
+              /*      
             stage('Guardando WAR') { 
                      figlet "Stage: ${env.STAGE_NAME}"                    
                       archiveArtifacts '*.jar'               
                 
-            }
+            }*/
 
            stage("runDownloadedJar"){
                     figlet "Stage: ${env.STAGE_NAME}"
@@ -136,8 +136,8 @@ def call(listaEtapas,pipelineType){
                     ]
 
             
+             }
         }
-
  
             
   
