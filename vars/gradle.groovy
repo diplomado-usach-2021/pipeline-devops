@@ -162,6 +162,9 @@ def call(listaEtapas,pipelineType){
              stage("merge to Master"){
                   figlet "Stage: ${env.STAGE_NAME}"
                   def git = new helpers.Git();
+
+                println env
+                println env.GIT_BRANCH 
                   git.merge(env.GIT_BRANCH, 'main');
     
             }  
@@ -169,7 +172,7 @@ def call(listaEtapas,pipelineType){
              stage("merge to develop"){
                   figlet "Stage: ${env.STAGE_NAME}"
                   def git = new helpers.Git();
-                  git.merge(env.GIT_BRANCH,'develop');
+                //  git.merge(env.GIT_BRANCH,'develop');
       
             
             }  
