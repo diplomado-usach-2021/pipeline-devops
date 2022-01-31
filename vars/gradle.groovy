@@ -147,7 +147,7 @@ def call(listaEtapas,pipelineType){
                   
             }  
 
-            input 'aprobacion para despliegue a produccion'
+           // input 'aprobacion para despliegue a produccion'
 
             stage("deploy  prod"){
                   figlet "Stage: ${env.STAGE_NAME}"
@@ -162,22 +162,22 @@ def call(listaEtapas,pipelineType){
              stage("merge to Master"){
                   figlet "Stage: ${env.STAGE_NAME}"
                   def git = new helpers.Git();
-                  git.merge();
-      
+                  git.merge(env.GIT_BRANCH, 'main');
+    
             }  
 
              stage("merge to develop"){
                   figlet "Stage: ${env.STAGE_NAME}"
                   def git = new helpers.Git();
-                  git.merge();
+                  git.merge(env.GIT_BRANCH,'develop');
       
-                
+            
             }  
 
             stage("merge tag master"){
                   figlet "Stage: ${env.STAGE_NAME}"
                   def git = new helpers.Git();
-                  git.tag();
+                  git.tag(env.GIT_BRANCH);
       
                 
             }  
