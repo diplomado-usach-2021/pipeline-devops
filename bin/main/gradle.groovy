@@ -1,3 +1,5 @@
+import helpers.*
+
 /*
 	forma de invocación de método call:
 	def ejecucion = load 'script.groovy'
@@ -132,35 +134,52 @@ def call(listaEtapas,pipelineType){
             
              }
              
-             input 'aprobacion para despliegue a produccion'
+      
+  //////////////////////////////////////////////////////////////////////////////////////////////////////
+
+            stage("deploy  QA"){
+                  figlet "Stage: ${env.STAGE_NAME}"
+                
+            }  
+
              stage("test qa"){
                   figlet "Stage: ${env.STAGE_NAME}"
-                  sh  "  "
+                  
             }  
+
+            input 'aprobacion para despliegue a produccion'
 
             stage("deploy  prod"){
                   figlet "Stage: ${env.STAGE_NAME}"
-                  sh  "  "
+                  
             }  
 
             stage("test prod"){
                   figlet "Stage: ${env.STAGE_NAME}"
-                  sh  "  "
+                  
             }  
 
-             stage("merge master"){
+             stage("merge to Master"){
                   figlet "Stage: ${env.STAGE_NAME}"
-                  sh  "  "
+                  def git = new helpers.Git();
+                  git.merge();
+      
             }  
 
              stage("merge to develop"){
                   figlet "Stage: ${env.STAGE_NAME}"
-                  sh  "  "
+                  def git = new helpers.Git();
+                  git.merge();
+      
+                
             }  
 
-            stage("merge to develop"){
+            stage("merge tag master"){
                   figlet "Stage: ${env.STAGE_NAME}"
-                  sh  "  "
+                  def git = new helpers.Git();
+                  git.tag();
+      
+                
             }  
         }
  
