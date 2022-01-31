@@ -131,6 +131,37 @@ def call(listaEtapas,pipelineType){
 
             
              }
+             
+             input 'aprobacion para despliegue a produccion'
+             stage("test qa"){
+                  figlet "Stage: ${env.STAGE_NAME}"
+                  sh  "  "
+            }  
+
+            stage("deploy  prod"){
+                  figlet "Stage: ${env.STAGE_NAME}"
+                  sh  "  "
+            }  
+
+            stage("test prod"){
+                  figlet "Stage: ${env.STAGE_NAME}"
+                  sh  "  "
+            }  
+
+             stage("merge master"){
+                  figlet "Stage: ${env.STAGE_NAME}"
+                  sh  "  "
+            }  
+
+             stage("merge to develop"){
+                  figlet "Stage: ${env.STAGE_NAME}"
+                  sh  "  "
+            }  
+
+            stage("merge to develop"){
+                  figlet "Stage: ${env.STAGE_NAME}"
+                  sh  "  "
+            }  
         }
  
             
