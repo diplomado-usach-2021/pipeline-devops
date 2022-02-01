@@ -17,15 +17,21 @@ def merge(String ramaOrigen, String ramaDestino){
    
 }
 
-def tag(String ramaOrigen){
+def tag(String ramaOrigen, String ramaDestino){
     println "este método realiza un tag ${ramaOrigen}"
 
     if (ramaOrigen.contains('release-v')){
         // cortar la variable y dejar solamente v1-0-0
-
+        checkout(ramaDestino)
         def tagValue = ramaOrigen.split('release-v')[1] // {['','1-0-0']}
 
         tagValue.each{println it}
+
+        sh """
+        git tag ${tagValue}
+        git push origin ${tagValue}
+
+        """
 
     }else{
         error "la rama ${ramaOrigen} no cumple con nomenclatura definida param rama release-v(major)-(minor)-(patch) "

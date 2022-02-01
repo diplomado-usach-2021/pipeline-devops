@@ -12,7 +12,7 @@ def call(listaEtapas,pipelineType){
            figlet pipelineType
   
 
-
+   /*
         if (pipelineType == 'CI'){
                         figlet 'Integración Continua'
 
@@ -133,7 +133,7 @@ def call(listaEtapas,pipelineType){
 
             
              }
-             
+             */
       
   //////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -180,7 +180,7 @@ def call(listaEtapas,pipelineType){
             stage("merge tag master"){
                   figlet "Stage: ${env.STAGE_NAME}"
                   def git = new helpers.Git();
-                  git.tag(GIT_LOCAL_BRANCH);
+                  git.tag(GIT_LOCAL_BRANCH, 'main')
       
                 
             }  
