@@ -165,14 +165,14 @@ def call(listaEtapas,pipelineType){
 
                 println env.GIT_BRANCH 
                  println GIT_LOCAL_BRANCH 
-                //  git.merge(env.GIT_BRANCH, 'main');
+                  git.merge(GIT_LOCAL_BRANCH, 'main');
     
             }  
 
              stage("merge to develop"){
                   figlet "Stage: ${env.STAGE_NAME}"
                   def git = new helpers.Git();
-                //  git.merge(env.GIT_BRANCH,'develop');
+                //  git.merge(GIT_LOCAL_BRANCH,'develop');
       
             
             }  
@@ -180,7 +180,7 @@ def call(listaEtapas,pipelineType){
             stage("merge tag master"){
                   figlet "Stage: ${env.STAGE_NAME}"
                   def git = new helpers.Git();
-                  git.tag(env.GIT_BRANCH);
+                  git.tag(GIT_LOCAL_BRANCH);
       
                 
             }  
