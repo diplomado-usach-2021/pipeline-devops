@@ -12,7 +12,7 @@ def call(listaEtapas,pipelineType){
            figlet pipelineType
   
 
-   /*
+ 
         if (pipelineType == 'CI'){
                         figlet 'Integración Continua'
 
@@ -89,7 +89,7 @@ def call(listaEtapas,pipelineType){
                         
 
         }else if (pipelineType == 'CD'){
-
+  /*
             figlet 'devilery Continua'
                 stage("downloadNexus"){
                         figlet "Stage: ${env.STAGE_NAME}"
