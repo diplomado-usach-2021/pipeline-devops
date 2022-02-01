@@ -163,9 +163,8 @@ def call(listaEtapas,pipelineType){
                   figlet "Stage: ${env.STAGE_NAME}"
                   def git = new helpers.Git();
 
-                println env
                 println env.GIT_BRANCH 
-                 println env.GIT_LOCAL_BRANCH 
+                 println GIT_LOCAL_BRANCH 
                   git.merge(env.GIT_BRANCH, 'main');
     
             }  

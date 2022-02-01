@@ -11,9 +11,7 @@ def merge(String ramaOrigen, String ramaDestino){
     // merge ramaOrigen
     sh  """
         git merge ${ramaOrigen}
-        git commit -m "merge de  ${ramaOrigen}"
         git push origin ${ramaDestino}
-
 
     """
    
@@ -28,7 +26,7 @@ def tag(String ramaOrigen){
 }
 
 def checkout(String rama){
-      sh "git reset --hard head; git checkout origin  ${rama}; git pull origin ${rama} "
+      sh "git reset --hard head; git checkout ${rama}; git pull origin/${rama} "
 }
 
 return this;
