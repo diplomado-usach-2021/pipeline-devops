@@ -20,8 +20,9 @@ def tag(String ramaOrigen, String ramaDestino){
 		checkout(ramaDestino)
 		def tagValue = ramaOrigen.split('release-')[1]
 		sh """
-			git tag 2${tagValue}
-			git push origin 2${tagValue}
+            git tag --delete ${tagValue}
+			git tag ${tagValue}
+			git push origin ${tagValue}
 		"""
 
 	} else {
