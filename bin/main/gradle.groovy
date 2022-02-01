@@ -164,8 +164,8 @@ def call(listaEtapas,pipelineType){
                   def git = new helpers.Git();
 
                 println env.GIT_BRANCH 
-                 println GIT_LOCAL_BRANCH 
-                  //git.merge(GIT_LOCAL_BRANCH, 'main');
+                println GIT_LOCAL_BRANCH 
+                git.merge(GIT_LOCAL_BRANCH, 'main');
     
             }  
 
