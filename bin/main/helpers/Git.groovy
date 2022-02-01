@@ -23,9 +23,9 @@ def tag(String ramaOrigen){
     if (ramaOrigen.contains('release-v')){
         // cortar la variable y dejar solamente v1-0-0
 
-        def tagValue = ramaOrigen.split('release-v') // {['','1-0-0']}
+        def tagValue = ramaOrigen.split('release-v')[1] // {['','1-0-0']}
 
-        tagValue.each{print}
+        tagValue.each{println it}
 
     }else{
         error "la rama ${ramaOrigen} no cumple con nomenclatura definida param rama release-v(major)-(minor)-(patch) "
