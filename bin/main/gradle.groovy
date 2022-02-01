@@ -165,7 +165,7 @@ def call(listaEtapas,pipelineType){
 
                 println env.GIT_BRANCH 
                  println GIT_LOCAL_BRANCH 
-                  git.merge(GIT_LOCAL_BRANCH, 'main');
+                  //git.merge(GIT_LOCAL_BRANCH, 'main');
     
             }  
 
