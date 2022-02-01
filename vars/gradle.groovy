@@ -89,7 +89,7 @@ def call(listaEtapas,pipelineType){
                         
 
         }else if (pipelineType == 'CD'){
-  /*
+ 
             figlet 'devilery Continua'
                 stage("downloadNexus"){
                         figlet "Stage: ${env.STAGE_NAME}"
@@ -133,7 +133,7 @@ def call(listaEtapas,pipelineType){
 
             
              }
-             */
+             
       
   //////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -177,7 +177,7 @@ def call(listaEtapas,pipelineType){
             
             }  
 
-            stage("merge tag master"){
+            stage("crear tag master"){
                   figlet "Stage: ${env.STAGE_NAME}"
                   def git = new helpers.Git();
                   git.tag(GIT_LOCAL_BRANCH, 'main')
