@@ -16,7 +16,7 @@ def tag(String ramaOrigen, String ramaDestino){
 	println "Este método realiza un tag en master de ${ramaOrigen}"
 
 	if (ramaOrigen.contains('release-v')){
-        sh "git pull"
+        sh "git pull --tags "
 		checkout(ramaDestino)
 		def tagValue = ramaOrigen.split('release-')[1]
 		sh """
