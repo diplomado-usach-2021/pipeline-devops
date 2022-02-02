@@ -90,6 +90,7 @@ def call(listaEtapas,pipelineType){
 
         }else if (pipelineType == 'CD'){
  
+ /*
             figlet 'devilery Continua'
                 stage("downloadNexus"){
                         figlet "Stage: ${env.STAGE_NAME}"
@@ -133,7 +134,7 @@ def call(listaEtapas,pipelineType){
 
             
              }
-             
+             */
       
   //////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -163,6 +164,8 @@ def call(listaEtapas,pipelineType){
                   figlet "Stage: ${env.STAGE_NAME}"
                   def git = new helpers.Git();
 
+                    sh "git branch --all "
+                        sh " git show-ref"
                 println env.GIT_BRANCH 
                 println GIT_LOCAL_BRANCH 
                 git.merge(GIT_LOCAL_BRANCH, 'main');
